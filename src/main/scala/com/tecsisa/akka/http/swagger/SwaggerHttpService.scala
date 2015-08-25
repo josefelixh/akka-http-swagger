@@ -16,7 +16,7 @@
 
 package com.tecsisa.akka.http.swagger
 
-import akka.actor.{Actor, ActorSystem}
+import akka.actor.ActorSystem
 import akka.http.scaladsl.marshalling._
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
@@ -29,7 +29,6 @@ import scala.concurrent.ExecutionContextExecutor
 import scala.reflect.runtime.universe.Type
 
 trait SwaggerHttpService {
-  _: Actor =>
 
   def apiTypes: Seq[Type]
 

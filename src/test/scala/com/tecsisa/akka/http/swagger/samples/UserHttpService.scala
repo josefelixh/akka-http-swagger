@@ -17,7 +17,7 @@ package com.tecsisa.akka.http.swagger.samples
 
 import akka.actor.{ActorSystem, Actor}
 import akka.http.scaladsl.server.Directives
-import akka.stream.scaladsl.ImplicitFlowMaterializer
+import akka.stream.scaladsl.ImplicitMaterializer
 import com.tecsisa.akka.http.swagger.utils.JsonMarshalling
 import com.wordnik.swagger.annotations._
 
@@ -26,7 +26,7 @@ import scala.concurrent.ExecutionContextExecutor
 
 @Api(value = "/user", description = "Operations about users.", produces="application/json")
 trait UserHttpService {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   implicit val system: ActorSystem

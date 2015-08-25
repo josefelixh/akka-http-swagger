@@ -19,7 +19,7 @@ import javax.ws.rs.Path
 
 import akka.actor.Actor
 import akka.http.scaladsl.server.Directives
-import akka.stream.scaladsl.ImplicitFlowMaterializer
+import akka.stream.scaladsl.ImplicitMaterializer
 import com.tecsisa.akka.http.swagger.utils.JsonMarshalling
 import com.wordnik.swagger.annotations._
 
@@ -31,7 +31,7 @@ abstract class TestApiDoesNotExtendHttpService
 
 @Api(value = "/test")
 abstract class TestApiWithOnlyDataType {
-  _: Actor with ImplicitFlowMaterializer with Directives =>
+  _: Actor with ImplicitMaterializer with Directives =>
 
   @ApiOperation(value = "testApiOperation", httpMethod = "GET")
   @ApiImplicitParams(Array(new ApiImplicitParam(name = "test", value = "test param", dataType = "TestModel", paramType = "query")))
@@ -40,7 +40,7 @@ abstract class TestApiWithOnlyDataType {
 
 @Api(value = "/test")
 abstract class TestApiWithPathOperation {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   @Path("/sub/{someParam}/path/{anotherParam}")
@@ -58,7 +58,7 @@ abstract class TestApiWithPathOperation {
 
 @Api(value = "/test")
 abstract class TestApiWithParamsHierarchy {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   @Path("/paramHierarchyOperation")
@@ -72,7 +72,7 @@ abstract class TestApiWithParamsHierarchy {
 // order here (as indicated by `value`) doesn't match the position attributes
 @Api(value = "/test")
 abstract class TestApiWithOperationPositions {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   @Path("/path1")
@@ -95,7 +95,7 @@ abstract class TestApiWithOperationPositions {
 
 @Api(value = "/test", basePath = "http://override.com/api")
 abstract class TestApiWithBasePathAnnotation {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   @ApiOperation(value = "testApiOperation", httpMethod = "GET")

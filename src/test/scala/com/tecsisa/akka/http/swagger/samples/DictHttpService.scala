@@ -2,7 +2,7 @@ package com.tecsisa.akka.http.swagger.samples
 
 import akka.actor.{Actor, ActorSystem}
 import akka.http.scaladsl.server.Directives
-import akka.stream.scaladsl.ImplicitFlowMaterializer
+import akka.stream.scaladsl.ImplicitMaterializer
 import com.tecsisa.akka.http.swagger.utils.JsonMarshalling
 import com.wordnik.swagger.annotations._
 import com.wordnik.swagger.core.util.JsonSerializer
@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContextExecutor
 
 @Api(value = "/dict", description = "This is a dictionary api.")
 trait DictHttpService {
-  _: Actor with ImplicitFlowMaterializer with Directives
+  _: Actor with ImplicitMaterializer with Directives
     with JsonMarshalling =>
 
   implicit val system: ActorSystem
